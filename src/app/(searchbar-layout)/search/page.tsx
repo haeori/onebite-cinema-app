@@ -2,6 +2,20 @@ import style from '@/styles/search.module.css';
 import { MovieInfo } from '@/types/movie-types';
 import { MovieItem } from '@/components/movie/movie-item';
 import { MOVIE_API_URL } from '@/constants/movie-constants';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ q: string }> }): Promise<Metadata> {
+  const { q = '' } = await searchParams;
+
+  return {
+    title: q ? `"${q}" 검색 결과` : '검색',
+    description: q ? `"${q}" 검색 결과를 확인하세요` : '영화를 검색해보세요',
+    openGraph: {
+      title: q ? `"${q}" 검색 결과 | 한입시네마` : '검색 | 한입시네마',
+      description: q ? `"${q}" 검색 결과를 확인하세요` : '영화를 검색해보세요',
+    },
+  };
+}
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q: string }> }) {
   const { q = '' } = await searchParams;
