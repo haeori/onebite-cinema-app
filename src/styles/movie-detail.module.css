@@ -1,0 +1,158 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.posterContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.poster {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.titleSection {
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.releaseDate {
+    font-size: 1.125rem;
+    color: #666;
+    font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+    .releaseDate {
+        color: #aaa;
+    }
+}
+
+.subTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #6b1fa8;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 1rem;
+}
+
+.metadata {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+    .metadata {
+        color: #bbb;
+    }
+}
+
+.genre {
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+.genreTag {
+    background-color: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+    .genreTag {
+        background-color: #333;
+        color: #ddd;
+    }
+}
+
+.separator {
+    color: #ddd;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #6b1fa8;
+}
+
+@media (prefers-color-scheme: dark) {
+    .description {
+        background-color: #1a1a1a;
+        color: #ddd;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg, #6b1fa8 0%, #8b3fc8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(107, 31, 168, 0.3);
+}
+
+.backButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 31, 168, 0.4);
+}
+
+.backButton:active {
+    transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) {
+    .backButton {
+        background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    }
+
+    .backButton:hover {
+        box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+    }
+}
