@@ -5,14 +5,12 @@ import { MovieInfo } from '@/types/movie-types';
 import style from '@/styles/cinema-home.module.css';
 
 export default async function HomePage() {
-  const moviesRes = await fetch(`${MOVIE_API_URL}/movie`);
-  const recommendMoviesRes = await fetch(`${MOVIE_API_URL}/movie/random`);
+  const [moviesRes, recommendMoviesRes] = await Promise.all([fetch(`${MOVIE_API_URL}/movie`, { cache: 'force-cache' }), fetch(`${MOVIE_API_URL}/movie/random`, { next: { revalidate: 3 } })]);
 
   if (!moviesRes.ok) return <div>전체 영화 목록 로딩 실패</div>;
   if (!recommendMoviesRes.ok) return <div>추천 영화 목록 로딩 실패</div>;
 
-  const movies: MovieInfo[] = await moviesRes.json();
-  const recommendMovies: MovieInfo[] = await recommendMoviesRes.json();
+  const [movies, recommendMovies] = await Promise.all([moviesRes.json(), recommendMoviesRes.json()]);
 
   return (
     <>
