@@ -1,0 +1,84 @@
+.searchContainer {
+    padding: 1rem 0;
+}
+
+.searchTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: inherit;
+}
+
+.resultCount {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .resultCount {
+        color: #aaa;
+    }
+}
+
+.movieGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+/* 큰 화면에서도 5줄까지만 출력 */
+@media (min-width: 1000px) {
+    .movieGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.noResult {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #6b1fa8;
+}
+
+@media (prefers-color-scheme: dark) {
+    .noResult {
+        color: #a855f7;
+    }
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.error p {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #dc2626;
+}
+
+.error p:last-child {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+    .error p {
+        color: #ef4444;
+    }
+
+    .error p:last-child {
+        color: #aaa;
+    }
+}

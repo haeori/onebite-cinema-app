@@ -1,14 +1,13 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
+import Searchbar from '@/components/common/searchbar';
 
-export const metadata = {
-  title: '한입시네마',
-  description: '한입시네마에서 다채로운 영화들을 만나보세요',
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function SearchbarLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko">
-      <body>{children}</body>
-    </html>
+    <>
+      <Suspense fallback={<div>검색 바 로딩 중...</div>}>
+        <Searchbar />
+      </Suspense>
+      {children}
+    </>
   );
 }
