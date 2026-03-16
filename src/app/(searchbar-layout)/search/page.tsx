@@ -16,7 +16,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
     <>
       <div className={style.searchContainer}>
         <h3 className={style.searchTitle}>검색 결과</h3>
-        <div>
+        <div className={style.movieGrid}>
           {searchedMovies?.map((movie: MovieInfo) => (
             <MovieItem key={movie.id} movie={movie} />
           ))}
