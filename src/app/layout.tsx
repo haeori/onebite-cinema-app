@@ -5,8 +5,34 @@ import Link from 'next/link';
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
-  title: '한입시네마',
+  title: {
+    template: '%s | 한입시네마',
+    default: '한입시네마',
+  },
   description: '한입시네마에서 다채로운 영화들을 만나보세요',
+  keywords: ['영화', '영화 추천', '한입시네마', '영화 정보'],
+  authors: [{ name: 'Haeori' }],
+  creator: 'Haeori',
+  publisher: 'ONEBITE CINEMA',
+  openGraph: {
+    title: '한입시네마',
+    description: '한입시네마에서 다채로운 영화들을 만나보세요',
+    siteName: '한입시네마',
+    locale: 'ko_KR',
+    type: 'website',
+    images: [
+      {
+        url: '/thumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: '한입시네마',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
