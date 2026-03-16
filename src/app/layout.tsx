@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import '@/app/globals.css';
 import style from '@/styles/global-layout.module.css';
 import Link from 'next/link';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: '한입시네마',
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <body>
+        <NextTopLoader color="#6b1fa8" height={4} showSpinner={false} />
         <div className={style.container}>
           <Link href="/">
             <div className={style.siteTitle}>
