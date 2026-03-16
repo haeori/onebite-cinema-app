@@ -1,4 +1,7 @@
 import { ReactNode } from 'react';
+import '@/app/globals.css';
+import style from '@/styles/global-layout.module.css';
+import Link from 'next/link';
 
 export const metadata = {
   title: '한입시네마',
@@ -8,7 +11,20 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <div className={style.container}>
+          <Link href="/">
+            <div className={style.siteTitle}>
+              <span className={style.logoIcon}>🎬</span>
+              <span className={style.logoText}>
+                <span className={style.logoBrand}>ONEBITE</span>
+                <span className={style.logoSub}>CINEMA</span>
+              </span>
+            </div>
+          </Link>
+          <div className={style.content}>{children}</div>
+        </div>
+      </body>
     </html>
   );
 }
