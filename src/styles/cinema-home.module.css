@@ -1,0 +1,34 @@
+.movieSection {
+    margin-bottom: 3rem;
+}
+
+.sectionTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: inherit;
+}
+
+.recommendMovieGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+/* 큰 화면에서도 3줄까지만 출력 */
+@media (min-width: 1000px) {
+    .recommendMovieGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.allMovieGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+/* 큰 화면에서도 5줄까지만 출력 */
+@media (min-width: 1000px) {
+    .allMovieGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
