@@ -3,6 +3,7 @@ import { MovieInfo } from '@/types/movie-types';
 import { MovieItem } from '@/components/movie/movie-item';
 import { MOVIE_API_URL } from '@/constants/movie-constants';
 import { Metadata } from 'next';
+import { isArrayNotEmpty } from '@/utils/movie-utils';
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ q: string }> }): Promise<Metadata> {
   const { q = '' } = await searchParams;
@@ -30,11 +31,15 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
     <>
       <div className={style.searchContainer}>
         <h3 className={style.searchTitle}>검색 결과</h3>
-        <div className={style.movieGrid}>
-          {searchedMovies?.map((movie: MovieInfo) => (
-            <MovieItem key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {isArrayNotEmpty(searchedMovies) ? (
+          <div className={style.movieGrid}>
+            {searchedMovies?.map((movie: MovieInfo) => (
+              <MovieItem key={movie.id} movie={movie} />
+            ))}
+          </div>
+        ) : (
+          <div className={style.noResult}>검색 결과가 없습니다</div>
+        )}
       </div>
     </>
   );
