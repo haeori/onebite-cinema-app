@@ -7,3 +7,7 @@ export const isArrayEmpty = array => !isArrayNotEmpty(array);
 export const isStringEmpty = str => typeof str !== 'string' || str?.trim().length === 0;
 
 export const isStringNotEmpty = str => !isStringEmpty(str);
+
+export async function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
