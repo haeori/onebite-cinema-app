@@ -4,6 +4,8 @@ import { MovieItem } from '@/components/movie/movie-item';
 import { MOVIE_API_URL } from '@/constants/movie-constants';
 import { Metadata } from 'next';
 import { isArrayNotEmpty } from '@/utils/movie-utils';
+import { Suspense } from 'react';
+import MovieListSkeleton from '@/components/skeleton/movie-list-skeleton';
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ q: string }> }): Promise<Metadata> {
   const { q = '' } = await searchParams;
@@ -18,9 +20,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   };
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q: string }> }) {
-  const { q = '' } = await searchParams;
-
+async function SearchResults({ q }: { q: string }) {
   const searchRes = await fetch(`${MOVIE_API_URL}/movie/search?q=${encodeURIComponent(q)}`, { cache: 'force-cache' });
 
   if (!searchRes.ok) return <div>오류가 발생했습니다...</div>;
@@ -28,19 +28,34 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   const searchedMovies: MovieInfo[] = await searchRes.json();
 
   return (
-    <>
-      <div className={style.searchContainer}>
-        <h3 className={style.searchTitle}>검색 결과</h3>
-        {isArrayNotEmpty(searchedMovies) ? (
-          <div className={style.movieGrid}>
-            {searchedMovies?.map((movie: MovieInfo) => (
-              <MovieItem key={movie.id} movie={movie} />
-            ))}
-          </div>
-        ) : (
-          <div className={style.noResult}>검색 결과가 없습니다</div>
-        )}
-      </div>
-    </>
+    <div className={style.searchContainer}>
+      <h3 className={style.searchTitle}>검색 결과</h3>
+      {isArrayNotEmpty(searchedMovies) ? (
+        <div className={style.movieGrid}>
+          {searchedMovies?.map((movie: MovieInfo) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className={style.noResult}>검색 결과가 없습니다</div>
+      )}
+    </div>
+  );
+}
+
+export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q: string }> }) {
+  const { q = '' } = await searchParams;
+
+  return (
+    <Suspense
+      key={q}
+      fallback={
+        <div className={style.movieGrid}>
+          <MovieListSkeleton count={5} />
+        </div>
+      }
+    >
+      <SearchResults q={q} />
+    </Suspense>
   );
 }
