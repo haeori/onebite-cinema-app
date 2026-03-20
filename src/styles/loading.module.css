@@ -7,6 +7,11 @@
   gap: 1.5rem;
 }
 
+.container.small {
+  min-height: auto;
+  gap: 1rem;
+}
+
 /* 단일 링 스피너 (모던한 디자인) */
 .spinner {
   width: 60px;
@@ -17,12 +22,22 @@
   animation: spin 0.8s linear infinite;
 }
 
+.spinnerSmall {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+
 .text {
   color: #6b1fa8;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   animation: pulse 1.5s ease-in-out infinite;
+}
+
+.textSmall {
+  font-size: 0.875rem;
 }
 
 @keyframes spin {

@@ -1,0 +1,133 @@
+.reviewItem {
+  position: relative;
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.reviewItem:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .reviewItem {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+
+  .reviewItem:hover {
+    border-color: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.authorName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #171717;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .authorName {
+    color: #ededed;
+  }
+}
+
+.reviewDate {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reviewDate {
+    color: #9ca3af;
+  }
+}
+
+.deleteButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.deleteButton:hover {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  transform: scale(1.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .deleteButton {
+    color: #6b7280;
+  }
+
+  .deleteButton:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+  }
+}
+
+.reviewContent {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+  word-break: break-word;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reviewContent {
+    color: #d1d5db;
+  }
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+@media (prefers-color-scheme: dark) {
+  .loadingOverlay {
+    background: rgba(26, 26, 26, 0.95);
+  }
+}

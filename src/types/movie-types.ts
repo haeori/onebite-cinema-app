@@ -9,3 +9,11 @@ export type MovieInfo = {
   runtime: number;
   posterImgUrl: string;
 };
+
+export type ReviewData = {
+  id: number;
+  movieId: number;
+  author: string;
+  content: string;
+  createdAt: string;
+};
