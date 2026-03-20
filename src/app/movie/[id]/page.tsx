@@ -1,8 +1,12 @@
-import MovieDetail from '@/components/movie/movie-detail';
-import { MOVIE_API_URL } from '@/constants/movie-constants';
-import { MovieInfo } from '@/types/movie-types';
 import { Metadata } from 'next';
+
+import MovieDetail from '@/components/movie/movie-detail';
 import ReviewList from '@/components/review/review-list';
+import ReviewEditor from '@/components/review/review-editor';
+
+import { MOVIE_API_URL } from '@/constants/movie-constants';
+
+import { MovieInfo } from '@/types/movie-types';
 
 export async function generateStaticParams() {
   const movies = await fetch(`${MOVIE_API_URL}/movie`).then(res => res.json());
@@ -62,7 +66,7 @@ export default async function Movie({ params }: { params: Promise<{ id: string }
   return (
     <div>
       <MovieDetail movie={movieDetail} />
-      {/*<ReviewEditor movieId={id} />*/}
+      <ReviewEditor movieId={id} />
       <ReviewList movieId={id} />
     </div>
   );
