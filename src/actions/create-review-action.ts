@@ -33,7 +33,10 @@ export async function createReviewAction(_: FormState, formData: FormData) {
     });
 
     if (!res.ok) {
-      throw new Error(res.statusText);
+      return {
+        status: false,
+        error: '리뷰 등록에 실패했습니다',
+      };
     }
 
     revalidateTag(`review-${movieId}`);
