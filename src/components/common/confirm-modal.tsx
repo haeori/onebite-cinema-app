@@ -10,7 +10,7 @@ type ModalProps = {
   icon: string;
 };
 
-export default function Modal({ isOpen, onClose, message, icon }: ModalProps) {
+export default function ConfirmModal({ isOpen, onClose, message, icon }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';

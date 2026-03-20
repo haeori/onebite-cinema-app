@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
-export default async function Movie({ params }: { params: Promise<{ id: string }> }) {
+export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
   const movieDetailRes = await fetch(`${MOVIE_API_URL}/movie/${id}`, { cache: 'force-cache' });

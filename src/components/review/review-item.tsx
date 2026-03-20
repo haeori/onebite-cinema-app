@@ -4,7 +4,7 @@ import { ReviewData } from '@/types/movie-types';
 import style from '@/styles/review-item.module.css';
 import { useActionState, useEffect, useState } from 'react';
 import { deleteReviewAction } from '@/actions/delete-review-action';
-import Modal from '@/components/common/modal';
+import ConfirmModal from '@/components/common/confirm-modal';
 import { Loading } from '@/components/common/loading';
 
 export function ReviewItem({ review }: { review: ReviewData }) {
@@ -51,7 +51,7 @@ export function ReviewItem({ review }: { review: ReviewData }) {
         </form>
       </div>
       <p className={style.reviewContent}>{review.content}</p>
-      <Modal isOpen={modalState.isOpen} onClose={() => setModalState({ ...modalState, isOpen: false })} message={modalState.message} icon={modalState.icon} />
+      <ConfirmModal isOpen={modalState.isOpen} onClose={() => setModalState({ ...modalState, isOpen: false })} message={modalState.message} icon={modalState.icon} />
     </div>
   );
 }
