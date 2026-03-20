@@ -36,7 +36,13 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  modal: ReactNode;
+}) {
   return (
     <html lang="ko">
       <body>
@@ -52,6 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </Link>
           <div className={style.content}>{children}</div>
+          {modal}
         </div>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { createReviewAction } from '@/actions/create-review-action';
-import Modal from '@/components/common/modal';
+import ConfirmModal from '@/components/common/confirm-modal';
 import style from '@/styles/review-editor.module.css';
 
 export default function ReviewEditor({ movieId }: { movieId: string }) {
@@ -37,7 +37,7 @@ export default function ReviewEditor({ movieId }: { movieId: string }) {
           {isPending ? '작성중...' : '작성하기'}
         </button>
       </form>
-      <Modal isOpen={modalState.isOpen} onClose={() => setModalState({ ...modalState, isOpen: false })} message={modalState.message} icon={modalState.icon} />
+      <ConfirmModal isOpen={modalState.isOpen} onClose={() => setModalState({ ...modalState, isOpen: false })} message={modalState.message} icon={modalState.icon} />
     </section>
   );
 }
