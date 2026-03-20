@@ -9,11 +9,20 @@ import { MOVIE_API_URL } from '@/constants/movie-constants';
 import { MovieInfo } from '@/types/movie-types';
 
 export async function generateStaticParams() {
-  const movies = await fetch(`${MOVIE_API_URL}/movie`).then(res => res.json());
+  try {
+    const res = await fetch(`${MOVIE_API_URL}/movie`);
+    if (!res.ok) return [];
 
-  return movies.map((movie: MovieInfo) => ({
-    id: String(movie.id),
-  }));
+    const movies = await res.json();
+    if (!Array.isArray(movies)) return [];
+
+    return movies.map((movie: MovieInfo) => ({
+      id: String(movie.id),
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
