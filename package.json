@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
-    "next": "14.2.35",
+    "next": "15.5.12",
     "nextjs-progressbar": "^0.0.16",
     "nextjs-toploader": "^3.9.17",
     "prettier": "^3.8.1",

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   title: {
     template: '%s | 한입시네마',
     default: '한입시네마',
