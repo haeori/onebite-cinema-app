@@ -7,6 +7,8 @@ import { isArrayNotEmpty } from '@/utils/movie-utils';
 import { Suspense } from 'react';
 import MovieListSkeleton from '@/components/skeleton/movie-list-skeleton';
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ q: string }> }): Promise<Metadata> {
   const { q = '' } = await searchParams;
 
