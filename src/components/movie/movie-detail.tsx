@@ -9,7 +9,7 @@ type MovieDetailProps = {
 };
 
 // 영화 상세 페이지
-export const MovieDetail = ({ movie }: MovieDetailProps) => {
+export default function MovieDetail({ movie }: MovieDetailProps) {
   return (
     <>
       <div className={style.container}>
@@ -57,4 +57,4 @@ export const MovieDetail = ({ movie }: MovieDetailProps) => {
       </div>
     </>
   );
-};
+}
