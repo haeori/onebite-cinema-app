@@ -4,13 +4,11 @@ import { ReviewItem } from '@/components/review/review-item';
 import style from '@/styles/review-list.module.css';
 
 export default async function ReviewList({ movieId }: { movieId: string }) {
-  const res = await fetch(`${MOVIE_API_URL}/review/movie/${encodeURIComponent(movieId)}`, { next: { tags: [`review-${movieId}`] } });
-
-  if (!res.ok) {
-    throw new Error(`Error fetching reviews : ${res.statusText}`);
-  }
-
-  const reviews: ReviewData[] = await res.json();
+  const reviews: ReviewData[] = await fetch(`${MOVIE_API_URL}/review/movie/${encodeURIComponent(movieId)}`, {
+    next: { tags: [`review-${movieId}`] },
+  })
+    .then(res => (res.ok ? res.json() : []))
+    .catch(() => []);
 
   return (
     <section className={style.reviewSection}>
