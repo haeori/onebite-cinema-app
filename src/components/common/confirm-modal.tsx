@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-import style from '@/styles/modal.module.css';
+import React, { useEffect, useRef } from 'react';
+import style from '@/styles/confirm-modal.module.css';
 
 type ModalProps = {
   isOpen: boolean;
@@ -11,28 +11,35 @@ type ModalProps = {
 };
 
 export default function ConfirmModal({ isOpen, onClose, message, icon }: ModalProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
   useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      dialog.showModal();
     } else {
-      document.body.style.overflow = 'unset';
+      dialog.close();
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if ((e.target as Element).nodeName === 'DIALOG') {
+      onClose();
+    }
+  };
 
   return (
-    <div className={style.overlay} onClick={onClose}>
-      <div className={style.modal} onClick={e => e.stopPropagation()}>
-        <div className={style.icon}>{icon}</div>
-        <p className={style.message}>{message}</p>
-        <button className={style.button} onClick={onClose}>
-          확인
-        </button>
-      </div>
-    </div>
+    <dialog ref={dialogRef} className={style.modal} onClick={handleBackdropClick}>
+      <div className={style.icon}>{icon}</div>
+      <p className={style.message}>{message}</p>
+      <button className={style.button} onClick={onClose}>
+        확인
+      </button>
+    </dialog>
   );
 }
