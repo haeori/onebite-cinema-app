@@ -1,17 +1,14 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import style from '@/styles/movie-item.module.css';
 
 import { MovieInfo } from '@/types/movie-types';
 
-type MovieItemProps = {
-  movie: MovieInfo;
-};
-
-export const MovieItem = ({ movie }: MovieItemProps) => {
+export const MovieItem = ({ movie }: { movie: MovieInfo }) => {
   return (
     <Link href={`/movie/${movie.id}`}>
-      <img className={style.moviePoster} src={movie.posterImgUrl} alt={movie.title} />
+      <Image className={style.moviePoster} src={movie.posterImgUrl} alt={`${movie.title} 영화의 포스터`} width={400} height={600} />
     </Link>
   );
 };

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import style from '@/styles/movie-detail.module.css';
 
@@ -15,7 +16,13 @@ export default function MovieDetail({ movie }: MovieDetailProps) {
       <div className={style.container}>
         {/* 영화 포스터 */}
         <div className={style.posterContainer}>
-          <img src={movie.posterImgUrl} alt={movie.title} className={style.poster} />
+          <Image
+            src={movie.posterImgUrl}
+            alt={`${movie.title} 영화 포스터`}
+            width={400}
+            height={600}
+            className={style.poster}
+          />
         </div>
 
         {/* 영화 정보 */}
