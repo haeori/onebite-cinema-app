@@ -1,4 +1,6 @@
-import Link from 'next/link';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 import style from '@/styles/movie-detail.module.css';
@@ -11,18 +13,18 @@ type MovieDetailProps = {
 
 // 영화 상세 페이지
 export default function MovieDetail({ movie }: MovieDetailProps) {
+  const router = useRouter();
+
+  const handleBackClick = () => {
+    router.back();
+  };
+
   return (
     <>
       <div className={style.container}>
         {/* 영화 포스터 */}
         <div className={style.posterContainer}>
-          <Image
-            src={movie.posterImgUrl}
-            alt={`${movie.title} 영화 포스터`}
-            width={400}
-            height={600}
-            className={style.poster}
-          />
+          <Image src={movie.posterImgUrl} alt={`${movie.title} 영화 포스터`} width={400} height={600} className={style.poster} />
         </div>
 
         {/* 영화 정보 */}
@@ -54,11 +56,11 @@ export default function MovieDetail({ movie }: MovieDetailProps) {
           {/* 설명 */}
           <div className={style.description}>{movie.description}</div>
 
-          {/* 영화 목록으로 돌아가기 버튼 */}
+          {/* 영화 목록/검색 페이지로 돌아가기 버튼 */}
           <div className={style.buttonContainer}>
-            <Link href="/" className={style.backButton}>
-              영화 목록으로 돌아가기
-            </Link>
+            <button onClick={handleBackClick} className={style.backButton}>
+              이전으로
+            </button>
           </div>
         </div>
       </div>
