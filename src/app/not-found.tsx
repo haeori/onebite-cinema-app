@@ -1,4 +1,4 @@
-import style from '@/styles/notfound.module.css';
+import style from '@/styles/common-error.module.css';
 import Link from 'next/link';
 
 export default function NotFound() {

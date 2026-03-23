@@ -13,10 +13,10 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     <div className={style.container}>
-      <div className={style.icon}>🎬</div>
-      <h1 className={style.title}>오류가 발생했습니다</h1>
+      <div className={style.icon}>🔍</div>
+      <h1 className={style.title}>검색 중 오류가 발생했습니다</h1>
       <p className={style.description}>
-        영화 정보를 불러오는 중 문제가 발생했습니다.
+        검색 과정에서 문제가 발생했습니다.
         <br />
         잠시 후 다시 시도해주세요.
       </p>
@@ -29,7 +29,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
           });
         }}
       >
-        다시 시도
+        재시도
       </button>
     </div>
   );
